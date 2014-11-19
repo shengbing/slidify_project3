@@ -67,16 +67,22 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>A Simple scatter Plot</h2>
+    <h2>A normal distribution plot</h2>
   </hgroup>
   <article data-timings="">
-    <p>Let us create a simple scatterplot.</p>
-
-<pre><code class="r">require(ggplot2)
-qplot(wt, mpg, data = mtcars) 
+    <pre><code class="r">x &lt;- seq(-10, 10, length=100)
+hx &lt;- dnorm(x)
+plot(x, hx, type=&quot;l&quot;, lty=2, xlab=&quot;x value&quot;,
+                     ylab=&quot;Density&quot;, main=&quot;normal distribution&quot;)
 </code></pre>
 
 <p><img src="assets/fig/simple-plot.png" title="plot of chunk simple-plot" alt="plot of chunk simple-plot" style="display: block; margin: auto;" /></p>
+
+<pre><code class="r">lines(x, dt(x, 1),lwd=2, col=colors[1])
+</code></pre>
+
+<pre><code>## Error: object of type &#39;closure&#39; is not subsettable
+</code></pre>
 
 <p><img src="figure/simple-plot.png" alt="plot of chunk simple-plot"></p>
 
@@ -137,7 +143,7 @@ qplot(wt, mpg, data = mtcars)
 
 <ol>
 <li>I don&#39;t like any of these slides </li>
-<li>A simple plot</li>
+<li>The normal distribution plot</li>
 <li>T distribution</li>
 <li><em>I can not tell. All is interesting.</em></li>
 </ol>
@@ -172,7 +178,7 @@ qplot(wt, mpg, data = mtcars)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='A Simple scatter Plot'>
+        data-slide=2 title='A normal distribution plot'>
          2
       </a>
     </li>

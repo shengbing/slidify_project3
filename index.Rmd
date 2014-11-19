@@ -22,13 +22,18 @@ ext_widgets: {rCharts: [libraries/nvd3]}
 
 ---
 
-## A Simple scatter Plot ##
-
-Let us create a simple scatterplot.
+## A normal distribution plot ##
 
 ```{r simple-plot, fig.height = 6, fig.align = 'center', message = F}
-require(ggplot2)
-qplot(wt, mpg, data = mtcars) 
+
+x <- seq(-10, 10, length=100)
+hx <- dnorm(x)
+plot(x, hx, type="l", lty=2, xlab="x value",
+                     ylab="Density", main="normal distribution")
+                
+                
+lines(x, dt(x, 1),lwd=2, col=colors[1])
+
 ```
 
 ![plot of chunk simple-plot](figure/simple-plot.png)
@@ -93,10 +98,10 @@ slidifyUI(fluidPage(
 
 ## Quiz
 
-Which one of these slifify slides do you like the most?
+Which one of these slidify slides do you like the most?
 
 1. I don't like any of these slides 
-2. A simple plot
+2. The normal distribution plot
 3. T distribution
 4. _I can not tell. All is interesting._
 

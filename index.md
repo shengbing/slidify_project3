@@ -22,17 +22,25 @@ ext_widgets: {rCharts: [libraries/nvd3]}
 
 ---
 
-## A Simple scatter Plot ##
-
-Let us create a simple scatterplot.
+## A normal distribution plot ##
 
 
 ```r
-require(ggplot2)
-qplot(wt, mpg, data = mtcars) 
+x <- seq(-10, 10, length=100)
+hx <- dnorm(x)
+plot(x, hx, type="l", lty=2, xlab="x value",
+                     ylab="Density", main="normal distribution")
 ```
 
 <img src="assets/fig/simple-plot.png" title="plot of chunk simple-plot" alt="plot of chunk simple-plot" style="display: block; margin: auto;" />
+
+```r
+lines(x, dt(x, 1),lwd=2, col=colors[1])
+```
+
+```
+## Error: object of type 'closure' is not subsettable
+```
 
 ![plot of chunk simple-plot](figure/simple-plot.png)
 
@@ -82,7 +90,7 @@ qplot(wt, mpg, data = mtcars)
 Which one of these slifify slides do you like the most?
 
 1. I don't like any of these slides 
-2. A simple plot
+2. The normal distribution plot
 3. T distribution
 4. _I can not tell. All is interesting._
 
