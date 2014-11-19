@@ -1,0 +1,109 @@
+---
+title       : Data product project presentation
+subtitle    : shiny and slidify
+author      : Shengbing Huang
+job         : Data science specialization
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [quiz, bootstrap, shiny, interactive]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+ext_widgets: {rCharts: [libraries/nvd3]}
+
+
+--- .class #id 
+
+## Motivation and functionality of the T-distribution apps
+
+1. T distribution approximates normal distribution when degree of freedom increases
+2. This app can visulize change of t-distribution given degree of freedom. 
+3. Given a t-statistics and degree of freedom, p-value can be computed and shown on the t-distribution
+
+---
+
+## A Simple scatter Plot ##
+
+Let us create a simple scatterplot.
+
+```{r simple-plot, fig.height = 6, fig.align = 'center', message = F}
+require(ggplot2)
+qplot(wt, mpg, data = mtcars) 
+```
+
+![plot of chunk simple-plot](figure/simple-plot.png)
+
+---
+
+
+```{r opts.label = 'shiny'}
+#ui.R
+
+library(shiny)
+
+slidifyUI(fluidPage(
+        titlePanel("T distribution"),
+        
+        sidebarLayout(
+                sidebarPanel(
+                        helpText(h3("Plot t-distribution with specified degree of freedom, and compute p-value for the t statistics you entered")),
+                        
+                                                
+                        sliderInput("df", 
+                                    label = "Degree of freedom:",
+                                    min = 1, max = 100, value = 1, step=1),
+                        
+                        numericInput("tstatistics", 
+                                    label = "Enter t statistics (-10 to 10) :",
+                                    min = -10, max = 10, value = 0, step=0.0001),
+                        
+                        checkboxInput("checkbox1", label = "show normal p value", value = TRUE),
+                        
+                        submitButton("Submit")
+                        
+                        
+                        
+                        ),
+                
+                mainPanel(
+                        
+                        
+                        textOutput("text1"),
+                        
+                        
+                        
+                        textOutput("text2"),
+                        
+                        
+                        
+                        textOutput("text3"),
+                        
+                        
+                        
+                        textOutput("text4"),
+                        br(),
+                        
+                        plotOutput('plot1')
+                )
+        )
+))
+```
+
+--- &radio
+
+## Quiz
+
+Which one of these slifify slides do you like the most?
+
+1. I don't like any of these slides 
+2. A simple plot
+3. T distribution
+4. _I can not tell. All is interesting._
+
+*** .hint
+This is a hint
+
+*** .explanation
+This is an explanation
+
+
